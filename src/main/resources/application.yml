@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: travel_service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://${DB_URL}:${DB_PORT}/${DB_NAME}?useSSL=true&characterEncoding=UTF-8
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
+dubbo:
+  registry:
+    id: ${DUBBO_REGISTORY_ID}
+    address: ${DUBBO_REGISTORY_ADDRESS}
+    protocol: zookeeper
+  protocol:
+    port: 9090
+    name: dubbo
+    id: ${DUBBO_PROTOCOL_ID}
+    status: server
+  application:
+    id: travel_service_id1
+    name: travel_service_name1
+  scan:
+    base-packages: com.tip.travel.service.impl

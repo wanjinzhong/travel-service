@@ -45,19 +45,14 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Boolean cacheUserToken(UserBasicInfo userBasicInfo) {
-        String key = buildUserRedisKey(userBasicInfo.getUserId());
-        return redisUtil.lSet(key, userBasicInfo);
+        String key = buildUserRedisKey(userBasicInfo.getToken());
+        return redisUtil.set(key, userBasicInfo.getUserId());
     }
 
     @Override
-    public List<UserBasicInfo> checkLogin(Long userId) {
-        String key = buildUserRedisKey(userId);
-        List<UserBasicInfo> userObjs = (List) redisUtil.get(key);
-        if (!CollectionUtils.isEmpty(userObjs)) {
-            return (List<UserBasicInfo>) userObjs;
-        } else {
-            return newArrayList();
-        }
+    public Long checkLogin(String token) {
+        String key = buildUserRedisKey(token);
+        return Long.valueOf(redisUtil.get(key).toString());
     }
 
     private UserBasicInfo loginByPhonePassword(String phoneNumber, String password) {
@@ -79,7 +74,7 @@ public class UserServiceImpl implements UserService {
         throw new UnauthenticatedException("暂不支持微信登陆");
     }
 
-    private String buildUserRedisKey(Long userId) {
-        return "user:" + userId;
+    private String buildUserRedisKey(String token) {
+        return "token:" + token;
     }
 }

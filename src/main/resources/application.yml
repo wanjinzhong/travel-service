@@ -6,6 +6,16 @@ spring:
     url: jdbc:mysql://${DB_URL}:${DB_PORT}/${DB_NAME}?useSSL=true&characterEncoding=UTF-8
     username: ${DB_USER}
     password: ${DB_PASSWORD}
+  redis:
+    host: ${TRAVEL_REDIS_HOST}
+    port: ${TRAVEL_REDIS_PORT}
+    password: ${TRAVEL_REDIS_PASSWORD}
+    database: ${TRAVEL_REDIS_DATABASE}
+    jedis:
+      pool:
+        max-active: 8
+        max-idle: 8
+        min-idle: 0
 dubbo:
   registry:
     id: ${DUBBO_REGISTORY_ID}

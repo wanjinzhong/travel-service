@@ -31,3 +31,8 @@ dubbo:
     name: travel_service_name1
   scan:
     base-packages: com.tip.travel.service.impl
+
+travel:
+  exception:
+    db: ${TRAVEL_EXCEPTION_DB}
+    email: ${TRAVEL_EXCEPTION_EMAIL}

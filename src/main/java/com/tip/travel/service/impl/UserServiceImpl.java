@@ -1,10 +1,5 @@
 package com.tip.travel.service.impl;
 
-import static com.google.common.collect.Lists.newArrayList;
-
-import java.util.List;
-import java.util.stream.Collectors;
-
 import com.alibaba.dubbo.config.annotation.Service;
 import com.tip.travel.common.bo.LoginBo;
 import com.tip.travel.common.bo.UserBasicInfo;
@@ -16,10 +11,10 @@ import com.tip.travel.service.UserSecretBo;
 import com.tip.travel.service.dao.UserDao;
 import com.tip.travel.service.utils.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.util.CollectionUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired

@@ -5,8 +5,10 @@ import com.tip.travel.common.domain.Travel;
 import com.tip.travel.common.service.TravelService;
 import com.tip.travel.service.dao.TravelDao;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@Transactional
 public class TravelServiceImpl implements TravelService {
 
     @Autowired
